@@ -19,6 +19,8 @@ class Plugin extends PluginBase
         // Register facades
         $facade = AliasLoader::getInstance();
         $facade->alias('Cart', '\Gloudemans\Shoppingcart\Facades\Cart');
+        $facade->alias('itemgrid', '\Dshoreman\Shop\FormWidgets\ItemGrid');
+
     }
 
     /**

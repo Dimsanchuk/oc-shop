@@ -1,22 +1,51 @@
-<table class="table table-condensed">
-    <thead>
-        <tr>
-            <th>Item #</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Subtotal</th>
-        </tr>
-    </thead>
-    <tbody>
+<?php if ($items): ?>
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <th>Item #</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
         <?php foreach ($items as $item): ?>
-        <tr>
-            <td><?= $item->id ?></td>
-            <td><?= $item->name ?></td>
-            <td><?= $item->price ?></td>
-            <td><?= $item->qty ?></td>
-            <td><?= $item->subtotal ?></td>
-        </tr>
+            <tr>
+                <td><?= $item->id ?></td>
+                <td><?= $item->name ?></td>
+                <td><?= $item->price ?></td>
+                <td><?= $item->qty ?></td>
+                <td><?= $item->subtotal ?></td>
+            </tr>
         <?php endforeach; ?>
-    </tbody>
-</table>
+        </tbody>
+    </table>
+<?php else: ?>
+    <?= Form::open([
+        'url'       => Backend::url('dshoreman/shop/order/store'),
+        'method'    => 'POST'
+    ]);
+    ?>
+    <table class="table table-condensed">
+        <tbody>
+            <tr>
+                <th>Item #</th>
+                <td><input type="text" name="id"></td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td><input type="text" name="name"></td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td><input type="text" name="price"></td>
+            </tr>
+            <tr>
+                <th>Quantity</th>
+                <td><input type="text" name="qty"></td>
+            </tr>
+        </tbody>
+    </table>
+    <?= Form::close(); ?>
+<?php endif ?>

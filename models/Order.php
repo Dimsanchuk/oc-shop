@@ -24,6 +24,13 @@ class Order extends Model
      */
     protected $fillable = [];
 
+    /*
+     * Validation
+     */
+    public $rules = [
+        'items' => 'required',
+    ];
+
     /**
      * @var array Relations
      */
@@ -49,5 +56,7 @@ class Order extends Model
             Carbon::now()->subMonth()->endOfMonth()
         ]);
     }
+
+
 
 }
